@@ -1,0 +1,35 @@
+# API keys and secrets
+*.env
+*.cer
+
+# Dependency directory
+node_modules
+bower_components
+
+# Editors
+.idea
+*.iml
+.vscode
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist
+
+# Logging files
+*.log
+*.pyc
+
+# # Playground file
+# src/playground.ts
+
+# Script result file
+data-export-result
+backtest
+backtest-post-records
+backtest-post-requests
+backtest-csv
+*.csv
+backtest-requests-json
