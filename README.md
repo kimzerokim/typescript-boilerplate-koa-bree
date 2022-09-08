@@ -9,7 +9,7 @@
   ㄴ[Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)  
   ㄴ[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - You should see `.vscode/settings.json` on your directory with below contents  
-// Or just create file and paste below lines.
+  // Or just create file and paste below lines.
 
 ```
 {
@@ -20,7 +20,7 @@
 ```
 
 - `src/playground.ts` file is for the placeholder.  
-Since this file work as code playground, I recommend add this file on `.gitignore`. (Currently commented out)
+  Since this file work as code playground, I recommend add this file on `.gitignore`. (Currently commented out)
 
 ## Environment
 
@@ -32,18 +32,18 @@ Since this file work as code playground, I recommend add this file on `.gitignor
 - Docker for the database container (Install Docker Desktop recommended)
 - Prepared PM2 multi process deployment using PM2_INDEX and PM2_INSTANCE_NUM on `src/config.ts` file
 - Default ports, You can change this by modify `docker-compose.yml` file and `src/config.ts` file
+
 ```
 POSTGRES_DB: 5432 (local and container)
 REDIS: 6379 (local and container)
 WEB_SERVER: 4000 (for local environment)
 ```
 
-
 ## Environment Injection
 
 This repository has 3 different env settings using `DotENV` library.  
 You can specify envionment append ENV flag as prefix of the command  
-`ex) ENV=production, ENV=local-prod, ENV=local` 
+`ex) ENV=production, ENV=local-prod, ENV=local`
 
 ### 1) Local
 
@@ -115,7 +115,8 @@ $ SYNC=True yarn schema-sync # Init postgres database model. SYNC=True flag enab
 $ yarn watch-start # This script detect source code's change and automatically restart server
 ```
 
-- Step 4. Deploy server on the local computer as production build
+- Step 4. Deploy server on the local computer as production build  
+  To execute this project as production build, You should create your environment file following above environment injection section
 
 ```shell script
 $ yarn build
@@ -125,6 +126,6 @@ $ ENV=(production | local-prod) yarn start
 ## Misc / Trouble Shooting
 
 - If `SYNC=True yarn schema-sync` fails with datasource error, please run `yarn schema-log` first.  
-Quite sure there is an error on database entity model or database connection settings.
+  Quite sure there is an error on database entity model or database connection settings.
 
 - [Using Typeorm CLI](https://typeorm.io/using-cli#create-a-new-migration)
