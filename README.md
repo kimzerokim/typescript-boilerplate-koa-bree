@@ -120,7 +120,7 @@ $ yarn watch-start # This script detect source code's change and automatically r
 
 ```shell script
 $ yarn build
-$ ENV=(production | local-prod) yarn start
+$ ENV=production yarn start
 ```
 
 ## Misc / Trouble Shooting
