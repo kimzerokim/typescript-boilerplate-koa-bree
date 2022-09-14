@@ -19,7 +19,17 @@
 }
 ```
 
-- `src/playground.ts` file is for the placeholder.  
+- To enable `format on save` feature with above configuration, in VSCODE
+
+```
+1. CTRL + SHIFT + P
+2. Format Document (in pop-up bar)
+3. Select Format Document
+4. Select Configure Default Formatter...
+5. Select Prettier - Code formatter
+```
+
+- `src/playground.ts` file is for the placeholder.
   Since this file work as code playground, I recommend add this file on `.gitignore`. (Currently commented out)
 
 ## Environment
@@ -34,15 +44,17 @@
 - Default ports, You can change this by modify `docker-compose.yml` file and `src/config.ts` file
 
 ```
+
 POSTGRES_DB: 5432 (local and container)
 REDIS: 6379 (local and container)
 WEB_SERVER: 4000 (for local environment)
+
 ```
 
 ## Environment Injection
 
-This repository has 3 different env settings using `DotENV` library.  
-You can specify envionment append ENV flag as prefix of the command  
+This repository has 3 different env settings using `DotENV` library.
+You can specify envionment append ENV flag as prefix of the command
 `ex) ENV=production, ENV=local-prod, ENV=local`
 
 ### 1) Local
@@ -55,10 +67,11 @@ Default values will inject if there is no env flag (set on `src/config.ts` file)
 
 ㄴ For connect production database on local computer
 
-Save as local-prod.env  
+Save as local-prod.env
 `!!! DO NOT ADD THIS FILE ON GIT !!!`
 
 ```
+
 PORT=4000
 ENV=production
 JWT_SECRET=Example
@@ -70,17 +83,20 @@ DB_PORT=5432
 DB_NAME=project
 REDIS_HOST=Example
 REDIS_PORT=6379
+
 ```
 
 ### 3) Production
 
 ㄴ For the production.
 
-Save as production.env  
+Save as production.env
 `!!! DO NOT ADD THIS FILE ON GIT !!!`
 
 ```
+
 ## DO NOT ADD THIS FILE ON GIT
+
 PORT=4000
 ENV=production
 JWT_SECRET=Example
@@ -92,6 +108,7 @@ DB_PORT=5432
 DB_NAME=project
 REDIS_HOST=Example
 REDIS_PORT=6379
+
 ```
 
 ## How to use
