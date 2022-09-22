@@ -1,15 +1,16 @@
-version: '3.1'
 services:
   db:
     container_name: typescript-boilerplate-db # Too prevent any container name conflict
     image: postgres:12-alpine
     restart: always
     ports:
-      - '5432:5432'
+      - '5433:5432'
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: project
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 
   redis:
     container_name: typescript-boilerplate-redis
@@ -18,4 +19,27 @@ services:
     hostname: user
     command: redis-server --port 6379
     ports:
-      - 6379:6379
+      - 6380:6379
+
+  #------#
+  # TEST #
+  #------#
+  test:
+    container_name: typescript-boilerplate-test
+    build:
+      context: .
+      dockerfile: test.Dockerfile
+    volumes:
+      # From this setting, local directory contents will sync with the container.
+      # (Only ./src, ./__test__, ./package.json)
+      - ./src:/test/src
+      - ./__test__:/test/__test__
+      - ./package.json:/test/package.json
+    depends_on:
+      - db
+    environment:
+      DB_NAME: test
+      DB_HOST: db
+      DB_PORT: 5432
+      REDIS_PORT: 6380
+    command: tail -f /dev/null
