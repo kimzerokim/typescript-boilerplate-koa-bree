@@ -19,7 +19,7 @@
     "test": "TEST=true jest --runInBand",
     "test:coverage": "TEST=true jest --collect-coverage",
     "test:watch": "TEST=true jest --watch",
-    "typeorm": "typeorm-ts-node-commonjs",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm",
     "schema-log": "yarn typeorm schema:log -d src/dataSource.ts",
     "schema-sync": "yarn typeorm schema:sync -d src/dataSource.ts",
     "playground-script": "ts-node src/playground.ts"
