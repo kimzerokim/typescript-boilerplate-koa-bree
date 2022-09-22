@@ -8,7 +8,7 @@ import { dataSource } from '@/dataSource';
 
 const jwtSecret = config.jwtSecret;
 
-export function generateToken(payload: { email: string }) {
+export function encodeJWT(payload: { email: string }): Promise<string> {
   return new Promise((resolve, reject) => {
     jwt.sign(
       payload,
@@ -24,7 +24,7 @@ export function generateToken(payload: { email: string }) {
   });
 }
 
-export function decodeToken(token: string): Promise<jwt.JwtPayload> {
+export function decodeJWT(token: string): Promise<jwt.JwtPayload> {
   return new Promise((resolve, reject) => {
     jwt.verify(token, jwtSecret, (error, decoded) => {
       if (error) reject(error);
@@ -35,12 +35,12 @@ export function decodeToken(token: string): Promise<jwt.JwtPayload> {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function jwtMiddleware(ctx: BaseContext & DefaultContext, next: () => Promise<any>) {
-  const token = ctx.cookies.get('access_token');
+  const token = ctx.request.get('authorization');
 
   if (!token) return next();
 
   try {
-    const decoded = await decodeToken(token);
+    const decoded = await decodeJWT(token);
 
     const userRepository: Repository<User> = dataSource.getRepository(User);
     const user = await userRepository.findOne({

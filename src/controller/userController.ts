@@ -42,16 +42,22 @@ export default class UserController {
 
     let token = null;
     try {
-      token = await generateToken({ email: user.email });
+      token = await encodeJWT({ email: user.email });
     } catch (e) {
-      ctx.throw(500, e);
+      ctx.status = 200;
+      ctx.body = {
+        success: false,
+        message: 'Internal error',
+        payload: {},
+      };
+      return;
     }
-    ctx.cookies.set('access_token', token, { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 7 });
+    ctx.set({ authorization: token });
     ctx.status = 200;
     ctx.body = {
       success: true,
       message: '',
-      payload: {},
+      payload: { email: user.email },
     };
   }
 
@@ -91,15 +97,22 @@ export default class UserController {
         message: 'Wrong password',
         payload: {},
       };
+      return;
     } else {
       let token = null;
       try {
-        token = await generateToken({ email: user.email });
+        token = await encodeJWT({ email: user.email });
       } catch (e) {
-        ctx.throw(500, e);
+        ctx.status = 200;
+        ctx.body = {
+          success: false,
+          message: 'Internal error',
+          payload: {},
+        };
+        return;
       }
       ctx.status = 200;
-      ctx.cookies.set('access_token', token, { httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 7 });
+      ctx.set({ authorization: token });
       ctx.body = {
         success: true,
         message: '',
@@ -111,10 +124,7 @@ export default class UserController {
   }
 
   public static signOut(ctx: Context) {
-    ctx.cookies.set('access_token', null, {
-      maxAge: 0,
-      httpOnly: true,
-    });
-    ctx.status = 200;
+    ctx.set({});
+    ctx.status = 204;
   }
 }
