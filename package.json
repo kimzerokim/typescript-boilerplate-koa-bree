@@ -17,7 +17,7 @@
     "start": "npm run serve",
     "test": "TEST=true jest --runInBand",
     "test:coverage": "TEST=true jest --collect-coverage",
-    "test:watch": "TEST=true jest --watch",
+    "test:watch": "TEST=true jest --watchAll",
     "typeorm": "typeorm-ts-node-commonjs",
     "schema-log": "yarn typeorm schema:log -d src/dataSource.ts",
     "schema-sync": "yarn typeorm schema:sync -d src/dataSource.ts",
