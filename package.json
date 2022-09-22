@@ -6,7 +6,6 @@
   "author": "Young.Kim",
   "license": "UNLICENSED",
   "scripts": {
-    "ts-node": "ts-node -r tsconfig-paths/register src/index.ts",
     "watch-start": "yarn lint-ts && nodemon --watch src -e ts,tsx --exec ts-node src/index.ts",
     "build-ts": "tsc",
     "lint-ts": "eslint . --ext .ts",
@@ -19,7 +18,7 @@
     "test": "TEST=true jest --runInBand",
     "test:coverage": "TEST=true jest --collect-coverage",
     "test:watch": "TEST=true jest --watch",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm",
+    "typeorm": "typeorm-ts-node-commonjs",
     "schema-log": "yarn typeorm schema:log -d src/dataSource.ts",
     "schema-sync": "yarn typeorm schema:sync -d src/dataSource.ts",
     "playground-script": "ts-node src/playground.ts"
