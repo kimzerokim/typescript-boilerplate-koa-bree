@@ -69,6 +69,5 @@
 
     "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["__test__/**/*", "./ecosystem.config.js", "./ormconfig.js"]
+  "include": ["src/**/*.ts", "__test__/**/*.ts"]
 }
