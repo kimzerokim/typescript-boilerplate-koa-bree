@@ -2,9 +2,9 @@ import { BaseContext, DefaultContext } from 'koa';
 import { Repository } from 'typeorm';
 import jwt from 'jsonwebtoken';
 
-import { config } from '../config';
-import { User } from '../entity/User';
-import { dataSource } from '../dataSource';
+import { config } from '@/config';
+import { User } from '@/entity/User';
+import { dataSource } from '@/dataSource';
 
 const jwtSecret = config.jwtSecret;
 

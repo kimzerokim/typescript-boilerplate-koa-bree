@@ -4,8 +4,8 @@ import bodyParser from 'koa-bodyparser';
 import helmet from 'koa-helmet';
 import 'reflect-metadata';
 
-import { router } from './routes/routes';
-import { jwtMiddleware } from './utils/authTokenUtil';
+import { router } from '@/routes/routes';
+import { jwtMiddleware } from '@/utils/authTokenUtil';
 
 export async function createApp(): Promise<Koa> {
   const app = new Koa();

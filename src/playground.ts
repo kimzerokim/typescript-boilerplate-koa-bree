@@ -1,5 +1,5 @@
-import { dataSource } from '../src/dataSource';
-import { logger } from '../src/logger';
+import { dataSource } from '@/dataSource';
+import { logger } from '@/logger';
 
 // Playground for typescript and library.
 // You can run below scripts using `yarn playground-script`

@@ -1,5 +1,5 @@
-import { dataSource } from '../dataSource';
-import { logger } from '../logger';
+import { dataSource } from '@/dataSource';
+import { logger } from '@/logger';
 
 (async () => {
   logger.info('Bree test job');

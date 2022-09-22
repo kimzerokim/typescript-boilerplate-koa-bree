@@ -1,10 +1,10 @@
 import { Context } from 'koa';
 import { Repository } from 'typeorm';
 
-import { dataSource } from '../dataSource';
-import { User } from '../entity/User';
+import { dataSource } from '@/dataSource';
+import { User } from '@/entity/User';
 
-import { generateToken } from '../utils/authTokenUtil';
+import { encodeJWT } from '@/utils/authTokenUtil';
 
 export default class UserController {
   public static async signUp(ctx: Context) {

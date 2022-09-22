@@ -4,10 +4,10 @@ import http from 'http';
 import Koa from 'koa';
 import path from 'path';
 
-import { createApp } from './app';
-import { config } from './config';
-import { dataSource } from './dataSource';
-import { logger } from './logger';
+import { createApp } from '@/app';
+import { config } from '@/config';
+import { dataSource } from '@/dataSource';
+import { logger } from '@/logger';
 
 function typescript_worker() {
   const path = require('path');
