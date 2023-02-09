@@ -2,7 +2,7 @@
   "name": "typescript-boilerplate",
   "version": "1.0.0",
   "description": "Typescript boilerplate for basic web server",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "author": "Young.Kim",
   "license": "UNLICENSED",
   "scripts": {
@@ -12,8 +12,8 @@
     "lint-and-fix": "eslint . --ext .ts --fix",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "prettier-format": "prettier --config .prettierrc.json 'src/**/*.ts' --write",
-    "serve": "node dist/index.js",
-    "build": "ENV=production npm run lint && npm run build-ts",
+    "serve": "node dist/src/index.js",
+    "build": "ENV=production npm run lint && npm run build-ts && tsc-alias",
     "start": "npm run serve",
     "test": "TEST=true jest --runInBand",
     "test:coverage": "TEST=true jest --collect-coverage",
@@ -58,6 +58,7 @@
     "supertest": "^6.2.4",
     "ts-jest": "^29.0.1",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.2",
     "tsconfig-paths": "^4.1.0",
     "typescript": "^4.7.3"
   },
